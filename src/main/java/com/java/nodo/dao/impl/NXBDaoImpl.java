@@ -36,8 +36,8 @@ public class NXBDaoImpl implements NhaXuatBanDAO {
     }
 
     @Override
-    public NhaXuatBan getOne(NhaXuatBan nxb) {
-        return this.banRepository.getOne(nxb.getId());
+    public NhaXuatBan getOne(Integer id) {
+        return this.banRepository.getReferenceById(id);
     }
 
     @Override

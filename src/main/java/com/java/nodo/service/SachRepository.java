@@ -12,6 +12,6 @@ import com.java.nodo.entities.Sach;
 @Repository
 public interface SachRepository extends JpaRepository<Sach, Integer> {
 
-    // @Query("Select * form Sach s where s.ten like '%:tem%'")
+    // @Query("Select * form Sach s where s.ten like '%:ten%'")
     // public List<Sach> getByName(@Param("ten") String ten);
 }

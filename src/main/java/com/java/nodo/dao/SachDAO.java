@@ -3,6 +3,7 @@ package com.java.nodo.dao;
 import java.util.List;
 
 import com.java.nodo.entities.Sach;
+import com.java.nodo.model.SachModel;
 
 public interface SachDAO {
     public List<Sach> getAll();

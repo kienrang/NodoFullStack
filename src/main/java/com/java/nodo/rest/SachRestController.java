@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.java.nodo.dao.SachDAO;
 import com.java.nodo.entities.Sach;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,8 +30,8 @@ public class SachRestController {
     }
 
     @PostMapping
-    public Sach insert(@RequestBody Sach s) {
-        return this.sachDAO.insert(s);
+    public Sach insert(@RequestBody Sach model) {
+        return this.sachDAO.insert(model);
     }
 
     @PutMapping("{id}")

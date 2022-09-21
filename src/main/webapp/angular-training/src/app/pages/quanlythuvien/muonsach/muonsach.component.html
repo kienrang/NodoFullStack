@@ -1,0 +1,101 @@
+<div class="container">
+    <div class=" w-100 d-flex justify-content-end">
+        <a class="btn btn-outline-success m-2 " (click)="hienform()">
+
+            <i class="fe fe-plus-circle me-2"></i> <span>Mượn Sách</span>
+        </a>
+    </div>
+    <div class="container w-60" *ngIf="checkForm == true">
+        <form class="row" action="" method="post" (submit)="onSubmit()" [formGroup]="formMS">
+            <div class="col-6">
+                <div>
+                    <label for="">Bạn Đọc</label>
+                    <select class="form-select" formControlName="banDoc">
+                        <option *ngFor="let bd of listBD" value="{{bd.id}}">{{bd.ten}}</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Chọn sách</label>
+                    <select class="form-select" formControlName="sach">
+                        <option *ngFor="let s of listSach" value="{{s.id}}">{{s.ten}}</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Ngày Mượn</label>
+                    <input type="date" class="form-control" formControlName="ngayMuon" [disabled]="true" />
+                </div>
+                <div>
+                    <label for="">Ngày Trả</label>
+                    <input type="date" class="form-control" formControlName="ngayTra" />
+                </div>
+            </div>
+            <div class="col-6">
+                <div>
+                    <label for="">Số lượng</label>
+                    <input type="number" class="form-control" formControlName="soLuong">
+                </div>
+                <div>
+                    <label for="">Ghi Chú</label>
+                    <textarea type="number" class="form-control" formControlName="ghiChu"></textarea>
+                </div>
+                <div>
+                    <label for="">Trạng thái</label>
+                    <div>
+                        <label for="ative" class="me-2">Hoạt động</label><input class="me-3" type="radio"
+                            formControlName="trangThai" value="1" id="ative" />
+                        <label for="unative" class="me-2">Không hoạt động</label> <input type="radio"
+                            formControlName="trangThai" value="0" id="unative" />
+                    </div>
+
+                </div>
+                <div class="text-center row">
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-outline-primary form-control mt-2">Save</button>
+                    </div>
+                    <div class="col-3">
+                        <button type="button" class="btn btn-outline-secondary form-control mt-2"
+                            (click)="cancelForm()">Cancel
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <button type="button" class="btn btn-outline-dark form-control mt-2 col-6"
+                            (click)="resetForm()"><i class="fa fa-refresh"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table class="table mt-2">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">Bạn đọc</th>
+                <th scope="col">Sách</th>
+                <th scope="col">Ngày mượn</th>
+                <th scope="col">Ngày Trả</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Ghi chú</th>
+                <th scope="col">Trạng thái</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of getAll">
+                <td>{{item.banDoc.ten}}</td>
+                <td>{{item.sach.ten}}</td>
+                <td>{{item.ngayMuon}}</td>
+                <td>{{item.ngayTra}}</td>
+                <td class="text-center">{{item.soLuong}}</td>
+                <td>{{item.ghiChu}}</td>
+                <td>{{item.trangThai == 1 ?'Hoạt động':'Không hoạt động'}}</td>
+                <td>
+                    <button (click)="onEdit(item)" type="button" title="Sửa"
+                        class="btn btn-sm btn-outline-warning mg-r-2 ng-star-inserted"><span _ngcontent-mut-c224=""
+                            class="fe fe-edit"></span></button>
+                    <button (click)="onConfirm(item)" type="button" title="Xóa"
+                        class="btn btn-sm btn-outline-danger mg-l-2 ng-star-inserted"><span _ngcontent-lsg-c224=""
+                            class="fe fe-trash-2"></span></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

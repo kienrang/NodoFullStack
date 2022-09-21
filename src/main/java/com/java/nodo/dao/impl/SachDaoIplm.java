@@ -5,8 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.java.nodo.dao.NhaXuatBanDAO;
 import com.java.nodo.dao.SachDAO;
+import com.java.nodo.dao.TacGiaDAO;
 import com.java.nodo.entities.Sach;
+import com.java.nodo.model.SachModel;
 import com.java.nodo.service.SachRepository;
 
 @Service
@@ -14,6 +17,12 @@ public class SachDaoIplm implements SachDAO {
 
     @Autowired
     private SachRepository sachRepository;
+
+    @Autowired
+    private TacGiaDAO tacGiaDAO;
+
+    @Autowired
+    private NhaXuatBanDAO nhaXuatBanDAO;
 
     @Override
     public List<Sach> getAll() {

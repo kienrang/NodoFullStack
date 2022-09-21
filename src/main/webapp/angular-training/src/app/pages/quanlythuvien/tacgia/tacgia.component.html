@@ -1,0 +1,75 @@
+<div class="container">
+    <div class=" w-100 d-flex justify-content-end">
+        <a class="btn btn-outline-success m-2 " (click)="hienform()">
+
+            <i class="fe fe-plus-circle me-2"></i> <span>Thêm tác giả</span>
+        </a>
+    </div>
+    <div class="container w-60" *ngIf="checkForm == true">
+        <form class="row" action="" method="post" (submit)="onSubmit()" [formGroup]="formTg">
+            <div class="col-6">
+                <div>
+                    <label for="">Tên</label>
+                    <input type="text" class="form-control" formControlName="ten">
+                </div>
+                <div>
+                    <label for="">Số điện thoại</label>
+                    <input type="text" class="form-control" formControlName="sdt">
+                </div>
+            </div>
+            <div class="col-6">
+                <div>
+                    <label for="">Địa chỉ</label>
+                    <input type="text" class="form-control" formControlName="diaChi">
+                </div>
+                <div>
+                    <label for="">Mô tả</label>
+                    <textarea type="text" class="form-control" formControlName="moTa"></textarea>
+                </div>
+                <div class="text-center row">
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-outline-primary form-control mt-2">Save</button>
+                    </div>
+                    <div class="col-3">
+                        <button type="button" class="btn btn-outline-secondary form-control mt-2"
+                            (click)="cancelForm()">Cancel
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <button type="button" class="btn btn-outline-dark form-control mt-2 col-6"
+                            (click)="resetForm()"><i class="fa fa-refresh"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table class="table mt-2">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">ID</th>
+                <th scope="col">Tên</th>
+                <th scope="col">Địa chỉ</th>
+                <th scope="col">Mô Tả</th>
+                <th scope="col">Trạng thái</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of getAll">
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.ten}}</td>
+                <td>{{item.diaChi}}</td>
+                <td>{{item.moTa}}</td>
+                <td>{{item.trangThai == 1 ?'Hoạt động':'Không hoạt động'}}</td>
+                <td>
+                    <button (click)="onEdit(item)" type="button" title="Sửa"
+                        class="btn btn-sm btn-outline-warning mg-r-2 ng-star-inserted"><span _ngcontent-mut-c224=""
+                            class="fe fe-edit"></span></button>
+                    <button (click)="onConfirm(item)" type="button" title="Xóa"
+                        class="btn btn-sm btn-outline-danger mg-l-2 ng-star-inserted"><span _ngcontent-lsg-c224=""
+                            class="fe fe-trash-2"></span></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

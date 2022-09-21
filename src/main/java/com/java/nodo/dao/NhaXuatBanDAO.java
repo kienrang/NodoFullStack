@@ -11,7 +11,7 @@ public interface NhaXuatBanDAO {
 
     public NhaXuatBan update(NhaXuatBan nxb);
 
-    public NhaXuatBan getOne(NhaXuatBan nxb);
+    public NhaXuatBan getOne(Integer nxb);
 
     public int delete(Integer id);
 

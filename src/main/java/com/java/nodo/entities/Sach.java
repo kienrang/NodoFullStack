@@ -44,7 +44,7 @@ public class Sach {
     private String chuDe;
 
     @Column(name = "namxuatban")
-    private Date namXuatBan;
+    private java.sql.Date namXuatBan;
 
     @Column(name = "mota")
     private String moTa;
