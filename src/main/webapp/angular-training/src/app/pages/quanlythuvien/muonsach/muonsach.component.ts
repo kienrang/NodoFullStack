@@ -20,7 +20,7 @@ export class MuonsachComponent implements OnInit {
 
   checkForm!: boolean
   ngOnInit(): void {
-    this.checkForm = false;
+    this.checkForm = true;
     this.service.getListMS().subscribe(resp => {
       console.log(resp);
       this.getAll = resp;
@@ -54,7 +54,7 @@ export class MuonsachComponent implements OnInit {
     soLuong: new FormControl(),
     ngayMuon: new FormControl(),
     ngayTra: new FormControl(),
-    trangThai: new FormControl(),
+    trangThai: new FormControl(1),
     ghiChu: new FormControl(),
   })
 
@@ -66,8 +66,20 @@ export class MuonsachComponent implements OnInit {
   }
 
   onEdit(item: any) {
-    this.formMS.patchValue(item);
+    this.formMS.patchValue(
+      {
+        id: item.id,
+        banDoc: item.banDoc.id,
+        sach: item.sach.id,
+        soLuong: item.soLuong,
+        ngayMuon: item.ngayMuon,
+        ngayTra: item.ngayTra,
+        trangThai: item.trangThai,
+        ghiChu: item.ghiChu,
+      }
+    );
     console.log(item)
+
     this.checkForm = true;
   }
   onSubmit() {

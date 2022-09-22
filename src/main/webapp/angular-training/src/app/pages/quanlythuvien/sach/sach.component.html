@@ -15,6 +15,7 @@
                 <div>
                     <label for="">Nhà Xuất Bản</label>
                     <select class="form-select" formControlName="nhaXuatBan">
+                        <option selected="selected">s</option>
                         <option *ngFor="let nxb of listNXB" value="{{nxb.id}}">{{nxb.ten}}</option>
                     </select>
                 </div>

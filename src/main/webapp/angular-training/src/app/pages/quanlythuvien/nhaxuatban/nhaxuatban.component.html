@@ -11,18 +11,23 @@
                 <div>
                     <label for="">Tên</label>
                     <input type="text" class="form-control" formControlName="ten">
+                    <span class="text-danger ms-1" *ngIf="!formNXB.get('ten')?.valid && formNXB.get('ten')?.touched">
+                        Bạn chưa nhập dữ liệu!</span>
                 </div>
                 <div>
                     <label for="">Địa chỉ</label>
                     <input type="text" class="form-control" formControlName="diaChi">
+                    <span class="text-danger ms-1"
+                        *ngIf="!formNXB.get('diaChi')?.valid && formNXB.get('diaChi')?.touched">
+                        Bạn chưa nhập dữ liệu!</span>
                 </div>
             </div>
             <div class="col-6">
-                <div>
+                <div class="mb-2">
                     <label for="">Mô tả</label>
                     <textarea type="text" class="form-control" formControlName="moTa"></textarea>
                 </div>
-                <div>
+                <!-- <div>
                     <label for="">Trạng thái</label>
                     <div>
                         <label for="ative" class="me-2">Hoạt động</label><input class="me-3" type="radio"
@@ -30,8 +35,11 @@
                         <label for="unative" class="me-2">Không hoạt động</label> <input type="radio"
                             formControlName="trangThai" value="0" id="unative" />
                     </div>
-
-                </div>
+                </div> -->
+                <mat-radio-group formControlName="trangThai">
+                    <mat-radio-button [checked]="checkStatus" value="0">Hoạt động</mat-radio-button>
+                    <mat-radio-button [checked]="!checkStatus" class="mx-2" value="1">Không hoạt động</mat-radio-button>
+                </mat-radio-group>
                 <div class="text-center row">
                     <div class="col-6">
                         <button type="submit" class="btn btn-outline-primary form-control mt-2">Save</button>

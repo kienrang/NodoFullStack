@@ -1,3 +1,4 @@
+import { FormArray, Validators } from '@angular/forms';
 import { filter } from 'rxjs/operators';
 import { NhaxuatbanService } from './../../../shared/services/nhaxuatban.service';
 import { TacgiaService } from './../../../shared/services/tacgia.service';
@@ -12,7 +13,6 @@ import { number } from 'echarts';
   styleUrls: ['./sach.component.scss']
 })
 export class SachComponent implements OnInit {
-
   constructor(
     private service: SachService, private fb: FormBuilder, private serviceTG: TacgiaService, private serviceNXB: NhaxuatbanService) { }
 
@@ -51,11 +51,11 @@ export class SachComponent implements OnInit {
 
   formSach = this.fb.group({
     id: new FormControl(),
-    ten: new FormControl(),
+    ten: [''],
     nhaXuatBan: new FormControl(),
     tacGia: new FormControl(),
     chuDe: new FormControl(),
-    namXuatBan: new FormControl(),
+    namXuatBan: [''],
     moTa: new FormControl(),
     soLuongConLai: new FormControl(),
     soLuongDangMuon: new FormControl(),
@@ -72,8 +72,8 @@ export class SachComponent implements OnInit {
   onEdit(item: any) {
     this.formSach.patchValue({
       ten: item.ten,
-      nhaXuatBan: item.nhaXuatBan,
-      tacGia: item.tacGia.ten,
+      nhaXuatBan: item.nhaXuatBan.id,
+      tacGia: item.tacGia.id,
       chuDe: item.chuDe,
       namXuatBan: item.namXuatBan,
       moTa: item.moTa,
@@ -98,10 +98,10 @@ export class SachComponent implements OnInit {
     data.nhaXuatBan = this.getNXB(this.formSach.getRawValue().nhaXuatBan)[0];
     data.tacGia = this.getTacGiaById(this.formSach.getRawValue().tacGia)[0];
     console.log('ádasdasd', data)
-    this.service.insertSach(data).subscribe(resp => {
-      console.log(resp);
-      this.ngOnInit()
-    });
+    // this.service.insertSach(data).subscribe(resp => {
+    //   console.log(resp);
+    //   this.ngOnInit()
+    // });
   }
 
   cancelForm() {

@@ -74,26 +74,16 @@
         </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="table-responsive">
-        <ngx-datatable
-            [ngClass]="'material'"
-            [columnMode]="'flex'"
-            [columns]="columns"
-            rowHeight="auto"
-            [count]="items.length"
-            [offset]="page.pageNumber"
-            [limit]="page.size"
-            [headerHeight]="50"
-            [footerHeight]="50"
-            [rows]="items"
-            [externalPaging]="false"
+        <ngx-datatable [ngClass]="'material'" [columnMode]="'flex'" [columns]="columns" rowHeight="auto"
+            [count]="items.length" [offset]="page.pageNumber" [limit]="page.size" [headerHeight]="50"
+            [footerHeight]="50" [rows]="items" [externalPaging]="false"
             [messages]="{emptyMessage: 'Không có dữ liệu', totalMessage: 'bản ghi'}">
             <ng-container *ngFor="let col of columns">
                 <ngx-datatable-column prop="{{ col.prop }}" name="{{ col.name }}" [flexGrow]="col.flexGrow">
                     <ng-template let-column="column" ngx-datatable-header-template>
                         {{ column.name }}
                     </ng-template>
-                    <ng-template let-value="value" let-rowIndex="rowIndex" ngx-datatable-cell-template
-                                 let-row="row">
+                    <ng-template let-value="value" let-rowIndex="rowIndex" ngx-datatable-cell-template let-row="row">
                         <ng-container [ngSwitch]="col.prop">
                             <ng-container *ngSwitchCase="'index'">
                                 {{ rowIndex + 1 + page.pageNumber * page.size }}
@@ -104,12 +94,12 @@
                             </ng-container>
 
                             <ng-container *ngSwitchCase="'actions'" class="text-center">
-                                <button class="btn btn-sm btn-outline-primary mg-r-2" type="button"
-                                        title="Sửa" (click)="edit(row)">
+                                <button class="btn btn-sm btn-outline-primary mg-r-2" type="button" title="Sửa"
+                                    (click)="edit(row)">
                                     <span class="fe fe-edit-2"></span>
                                 </button>
-                                <button class="btn btn-sm btn-outline-danger mg-l-2" type="button"
-                                        title="Xóa" (click)="delete(row.id)">
+                                <button class="btn btn-sm btn-outline-danger mg-l-2" type="button" title="Xóa"
+                                    (click)="delete(row.id)">
                                     <span class="fe fe-trash-2"></span>
                                 </button>
                             </ng-container>

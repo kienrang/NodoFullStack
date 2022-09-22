@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 
 import { SachRoutingModule } from './sach-routing.module';
 import { SachComponent } from './sach.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -13,7 +16,11 @@ import { SachComponent } from './sach.component';
   imports: [
     CommonModule,
     SachRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule
+
   ]
 })
 export class SachModule { }

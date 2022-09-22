@@ -1,3 +1,5 @@
+import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,7 +15,9 @@ import { NhaxuatbanComponent } from './nhaxuatban.component';
   imports: [
     CommonModule,
     NhaxuatbanRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatRadioModule
 
   ]
 })

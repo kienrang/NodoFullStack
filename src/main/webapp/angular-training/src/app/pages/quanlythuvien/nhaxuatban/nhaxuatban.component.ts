@@ -14,6 +14,8 @@ export class NhaxuatbanComponent implements OnInit {
 
   getAll: any
 
+  checkStatus = false;
+
   checkForm!: boolean
   ngOnInit(): void {
     this.checkForm = false;
@@ -38,9 +40,9 @@ export class NhaxuatbanComponent implements OnInit {
   formNXB = this.fb.group({
     id: [''],
     ten: ['', [Validators.required]],
-    diaChi: [''],
+    diaChi: ['', [Validators.required]],
     moTa: [''],
-    trangThai: ['']
+    trangThai: ['', [Validators.required]]
   })
 
   onConfirm(item: any) {
@@ -51,7 +53,15 @@ export class NhaxuatbanComponent implements OnInit {
   }
 
   onEdit(item: any) {
-    this.formNXB.patchValue(item);
+    this.formNXB.patchValue({
+      id: item.id,
+      ten: item.ten,
+      diaChi: item.diaChi,
+      moTa: item.moTa,
+      trangThai: item.trangThai
+    }
+    );
+    this.checkStatus = !this.checkStatus
     this.checkForm = true;
     console.log(item);
   }
